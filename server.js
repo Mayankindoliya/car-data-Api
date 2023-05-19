@@ -4,9 +4,15 @@ const express = require('express');
 const app = express();
 
 const mongoose = require('mongoose');
+const middlewares = require('./helpers/middlewares');
+const routes = require('./routes');
 
-app.use(express);
 app.use(express.json());
+app.use(routes);
+
+// error handler middlerware
+app.use(middlewares.erroHandlersMiddleware)
+
 
 mongoose.connect(process.env.MONGOODB_URL)
   .then(() => {
