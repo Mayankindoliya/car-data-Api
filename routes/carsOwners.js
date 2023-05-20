@@ -14,4 +14,14 @@ router.post('/registercar', (req, res, next) => {
   })
 });
 
+router.post('/registerCarService', (req, res, next) => {
+  carsOwnerControllers.registerforCarService(req.body)
+  .then((data) =>{
+    res.json(data)
+  })
+  .catch((err) => {
+    next(err)
+  })
+});
+
 module.exports = router;
