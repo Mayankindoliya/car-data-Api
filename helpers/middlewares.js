@@ -9,7 +9,7 @@ async function authenticationMiddleware(req, res, next) {
     if (carOwnerHeader) {
      const token = carOwnerHeader.split(' ') [1]
      const payload = jwt.verifyToken(token)
-     const carowner = await carsOwner.findOne({_id: payload.id}, "name emailId, address").lean()
+     const carowner = await carsOwner.findOne({_id: payload.id}, "ownerName emailId address").lean()
      carowner.id = carowner._id
      req.carowner = carowner
     }
