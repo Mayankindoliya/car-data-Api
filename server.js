@@ -8,10 +8,13 @@ const middlewares = require('./helpers/middlewares');
 const routes = require('./routes');
 
 app.use(express.json());
+
+app.use(middlewares.authenticationMiddleware);
 app.use(routes);
 
 // error handler middlerware
-app.use(middlewares.erroHandlersMiddleware)
+app.use(middlewares.erroHandlersMiddleware);
+
 
 
 mongoose.connect(process.env.MONGOODB_URL)

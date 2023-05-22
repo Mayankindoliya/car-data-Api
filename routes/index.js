@@ -1,4 +1,5 @@
 module.exports= [
-  require('./carsOwners')
+  require('./carsOwners'),
+  require('./carService')
 ];
 

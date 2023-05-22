@@ -1,6 +1,7 @@
 const Cars = require('../models/cars');
-
 const bcrypt = require('bcrypt');
+const jwt = require('../helpers/jwt');
+
 
 class carsOwnerControllers {
 
@@ -24,7 +25,8 @@ class carsOwnerControllers {
     if (!bcrypt.compareSync(document.password, existingOwner.password)) {
       throw new Error("password does not match")
     }
-    return existingOwner
+    const token = jwt.createJwt({id: existingOwner._id})
+    return token
   }; 
 }
 module.exports = carsOwnerControllers;
